@@ -1,7 +1,8 @@
 # datasciencecoursera
 
 # No.1
-pollutantmean <- function(directory, pollutant, ID = 1:332){
+        pollutantmean <- function(directory, pollutant, ID = 1:332){
+        
         # Get file names from directory argument
         files_list <- list.files(directory, full.names = TRUE)
         
@@ -17,13 +18,13 @@ pollutantmean <- function(directory, pollutant, ID = 1:332){
         lapply(dat_subset[c("nitrate", "sulfate")],
                mean,
                na.rm = TRUE)
-}
-
+        }
+        
 
 # No 2
 
 
-complete <- function(directory, id = 1:332) {
+        complete <- function(directory, id = 1:332) {
 
         cvsfiles <- list.files(directory, full.names=TRUE)
         
@@ -31,16 +32,16 @@ complete <- function(directory, id = 1:332) {
         for (i in id) {
                 dat <- read.csv(files_list[i])
                 nobs <- c(nobs, sum(complete.cases(dat)))
-        }
+                }
         data.frame(id,nobs)
         
-}
+        }
 
-complete("specdata", 30:25)
+        complete("specdata", 30:25)
 
 # No 3
-source("complete.R")
-corr <- function(directory, threshold = 0) {
+        source("complete.R")
+        corr <- function(directory, threshold = 0) {
         
         result <- numeric()
         
@@ -59,12 +60,12 @@ corr <- function(directory, threshold = 0) {
                 
                 correlation <- cor(x = df$sulfate, y = df$nitrate, use = "complete.obs")
                 result <- c(result, correlation)
-        }
+                }
         result
-}
+        }
 
-cr <- corr("specdata", 400)
-head(cr)
+        cr <- corr("specdata", 400)
+        head(cr)
         
 
 
